@@ -1,10 +1,13 @@
-h1 {
-  padding-top: 1rem;
+:host {
+  display: grid;
+  grid-template-columns: minmax(min-content, 1fr);
+  grid-template-rows: min-content minmax(min-content, 1fr) min-content;
+
+  background-color: rgb(99, 103, 50);
 }
 
-body {
-  background-color: rgb(99, 103, 50);
-  padding-bottom: 40rem;
+h1 {
+  padding-top: 1rem;
 }
 
 .text-white {
@@ -12,12 +15,8 @@ body {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
+  margin: 0 10vw;
   background-color: white;
-  padding: 1rem;
-  margin-right: 0rem;
-  border-radius: 50px 50px 0px 0px;
-  width: 80rem;
-  height: 5rem;
+  border-radius: 5em 5em 0 0;
+  padding: 0.5em 2.5em;
 }
