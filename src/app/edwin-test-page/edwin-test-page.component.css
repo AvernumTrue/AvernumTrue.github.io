@@ -1,3 +1,12 @@
+h1 {
+  padding-top: 1em;
+}
+
 body {
-  background-color: blanchedalmond;
+  background-color: rgb(99, 103, 50);
+  padding-bottom: 100em;
+}
+
+.text-white {
+  color: white
 }
