@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import routes from 'src/routes';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,9 +16,8 @@ import { EdwinTestPageComponent } from './edwin-test-page/edwin-test-page.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    routes
   ],
-  providers: [],
+  providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
