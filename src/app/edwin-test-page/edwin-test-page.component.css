@@ -1,12 +1,23 @@
 h1 {
-  padding-top: 1em;
+  padding-top: 1rem;
 }
 
 body {
   background-color: rgb(99, 103, 50);
-  padding-bottom: 100em;
+  padding-bottom: 40rem;
 }
 
 .text-white {
   color: white
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  padding: 1rem;
+  margin-right: 0rem;
+  border-radius: 50px 50px 0px 0px;
+  width: 80rem;
+  height: 5rem;
 }
