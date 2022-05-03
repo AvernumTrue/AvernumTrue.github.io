@@ -15,8 +15,12 @@ h1 {
 }
 
 footer {
-  margin: 0 10vw;
+  /* margin: 0 10vw; */
   background-color: white;
   border-radius: 5em 5em 0 0;
   padding: 0.5em 2.5em;
+}
+
+.contact-us {
+  font-size: small;
 }
