@@ -35,9 +35,6 @@ h2 {
 }
 
 .price {
-  position: relative;
-  top: -16rem;
-  left: 47rem;
   transform: rotate(10deg);
   background-color: white;
   width: 10rem;
