@@ -34,8 +34,29 @@ h2 {
   color: white
 }
 
+.price {
+  position: relative;
+  top: -16rem;
+  left: 47rem;
+  transform: rotate(10deg);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 5em 5em 5em 5em;
+}
+
+.price-text {
+  font-size: 1.9rem;
+  padding-top: 0.5rem;
+  margin-bottom: 0rem;
+}
+
+.price-amount {
+  font-size: 2.9rem;
+}
+
 footer {
-  /* margin: 0 10vw; */
+  margin: 0 10vw;
   background-color: white;
   border-radius: 5em 5em 0 0;
   padding: 0.5em 2.5em;
