@@ -6,33 +6,34 @@
       <div class="card-body">
         <h5 class="card-title">Generate a Number</h5>
         <button
-          (click)="genNumb()"
+          (click)="execute()"
           type="button"
           class="btn btn-primary">
           x 1
         </button>
         <button
-          (click)="genTenNumb()"
+          (click)="executeTimes(10)"
           type="button"
           class="btn btn-primary">
           x 10
         </button>
         <button
-          (click)="genHundredNumb()"
+          (click)="executeTimes(100)"
           type="button"
           class="btn btn-primary">
           x 100
         </button>
         <button
-          (click)="genThousandNumb()"
+          (click)="executeTimes(1000)"
           type="button"
           class="btn btn-primary">
           x 1000
         </button>
+        <p class="card-text">Base chance to proc {{baseProcChance}}%
         <p class="card-text">Current chance to proc {{procChance}}%
         <p class="card-text">Generated Number: {{randomNumber}}
         <p class="card-text">Current Proc Average: {{averageProcs}}%
-        <p class="card-text">Numbers Generated: {{totalNumbersGenerated}}
+        <p class="card-text">Numbers Generated: {{allProcs.length}}
 
           <!-- TODO: Add way to reset -->
           <!-- <button
