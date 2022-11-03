@@ -5,9 +5,21 @@
     <div class="card" style="width: 40rem;">
       <div class="card-body">
         <h5 class="card-title">Home Page</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.
-        </p>
+        <button
+          (click)="genNumb()"
+          type="button"
+          class="btn btn-primary">
+          Generate Number
+        </button>
+        <button
+          (click)="genHundredNumb()"
+          type="button"
+          class="btn btn-primary">
+          Generate Number x100
+        </button>
+        <p class="card-text">Current chance to proc {{procChance}}%
+        <p class="card-text">Generated Number: {{randomNumber}}
+        <p class="card-text">Current Proc Average: {{averageProcs}}%
       </div>
     </div>
   </div>
