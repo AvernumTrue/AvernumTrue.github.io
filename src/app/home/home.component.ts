@@ -15,28 +15,40 @@ export class HomeComponent implements OnInit {
   failProcs: 0 = 0;
   successProcs: 0 = 0;
   averageProcs!: number;
+  totalNumbersGenerated: number = 0;
+  test!: number;
 
   constructor() { }
 
   ngOnInit(): void {
     this.procChance = 50;
-    // procChance is the minimum number as a percenatge to proc
   }
 
   genNumb() {
+    this.test = Math.random();
+    console.log(this.test);
     this.randomNumber = Math.floor(Math.random() * 100);
     this.allNumbers.push(this.randomNumber);
     this.checkProc();
     this.averageProcs = Math.floor(this.successProcs / this.allProcs.length * 100);
+    this.totalNumbersGenerated = this.allProcs.length;
   }
 
   checkProc() {
-    if (this.randomNumber >= this.procChance)
-      this.allProcs.push(1),
-        this.failProcs -= 1
+    if (this.randomNumber <= this.procChance)
+      this.allProcs.push(1)
+    // this.failProcs++; Do I even need this??
     else {
       this.allProcs.push(0);
       this.successProcs++;
+    }
+  }
+
+  // TODO: Add way to let user choose any(?) number of random numbers
+  genTenNumb() {
+    var times = 10;
+    for (var i = 0; i < times; i++) {
+      this.genNumb();
     }
   }
 
@@ -46,5 +58,16 @@ export class HomeComponent implements OnInit {
       this.genNumb();
     }
   }
+
+  genThousandNumb() {
+    var times = 1000;
+    for (var i = 0; i < times; i++) {
+      this.genNumb();
+    }
+  }
+
+  // TODO: Add way to reset
+  // reset() {
+  // }
 
 }
