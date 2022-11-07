@@ -29,14 +29,26 @@
           class="btn btn-primary">
           x 1000
         </button>
-        <p class="card-text">Base chance to proc {{baseProcChance}}%
-        <p class="card-text">Current chance to proc {{procChance}}%
-        <p class="card-text">Generated Number: {{randomNumber}}
-        <p class="card-text">Current Proc Average: {{averageProcs}}%
-        <p class="card-text">Numbers Generated: {{allProcs.length}}
+        <p class="card-text">Base chance to proc {{baseProcChance}}%</p>
+        <p class="card-text">Current chance to proc {{procChance}}%</p>
+        <p class="card-text">Generated number: {{randomNumber}}</p>
+        <p class="card-text">Average Of All Procs: {{averageOfAllProcs}}%</p>
+        <p class="card-text">Total numbers generated: {{totalNumbersGenerated}}</p>
+        <p class="card-text">Last few Procs Average:{{averageOfLastFewProcs}}%</p>
 
-          <!-- TODO: Add way to reset -->
-          <!-- <button
+        <div *ngFor="let currentNumber of lastFewProcs; index as i">
+          <div *ngIf="lastFewProcs[i] == 'Proc!'"
+            class="green">
+            {{lastFewProcs[i]}}
+          </div>
+          <div *ngIf="lastFewProcs[i] == 'No Proc'"
+            class="red">
+            {{lastFewProcs[i]}}
+          </div>
+        </div>
+
+        <!-- TODO: Add way to reset -->
+        <!-- <button
             (click)="reset()"
             type="button"
             class="btn btn-primary">

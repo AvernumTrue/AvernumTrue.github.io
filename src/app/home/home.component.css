@@ -11,3 +11,11 @@
   /* margin-left: 1em; */
   margin-right: 1em;
 }
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}

@@ -6,15 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  pseudoMultiplier: number = 100;
+  pseudoMultiplier: number = 1;
   randomNumber!: number;
   procMessage!: string;
-  allNumbers: number[] = [];
-  allProcs: number[] = [];
+  // allProcs: number[] = [];
   baseProcChance: number = 50;
   procChance!: number;
-  successProcs: 0 = 0;
-  averageProcs!: number;
+  allSuccessProcs: number = 0;
+  lastFewSuccessProcs: number = 0;
+  averageOfAllProcs!: number;
+  lastFewProcs: string[] = [];
+  averageOfLastFewProcs!: number;
+  totalNumbersGenerated: number = 0;
 
   constructor() { }
 
@@ -23,24 +26,36 @@ export class HomeComponent implements OnInit {
   }
 
   execute() {
-    this.genNum();
+    this.genNumber();
     this.checkProc();
+    this.totalNumbersGenerated++;
+
+    this.averageOfAllProcs = Math.floor(this.allSuccessProcs / this.totalNumbersGenerated * 100);
+    this.averageOfLastFewProcs = Math.floor(this.lastFewSuccessProcs / this.lastFewProcs.length * 100);
+    this.procChance = this.baseProcChance + (this.baseProcChance - this.averageOfLastFewProcs) * this.pseudoMultiplier;
+    // this.procChance = this.baseProcChance * this.pseudoMultiplier;
+
+    this.checkLastFewNumbers();
   }
 
-  genNum() {
+  checkLastFewNumbers() {
+    if (this.lastFewProcs.length > 10)
+      this.lastFewProcs.shift();
+  }
+
+  genNumber() {
     this.randomNumber = Math.floor(Math.random() * 100);
-    this.allNumbers.push(this.randomNumber);
   }
 
   checkProc() {
-    if (this.randomNumber < this.baseProcChance) {
-      this.allProcs.push(1);
+    if (this.randomNumber < this.procChance) {
+      this.allSuccessProcs++;
+      this.lastFewSuccessProcs++;
+      this.lastFewProcs.push("Proc!");
     } else {
-      this.allProcs.push(0);
-      this.successProcs++;
+      this.lastFewSuccessProcs--;
+      this.lastFewProcs.push("No Proc");
     }
-    this.averageProcs = Math.floor(this.successProcs / this.allProcs.length * 100);
-    this.procChance = this.baseProcChance + (this.baseProcChance - this.averageProcs) * this.pseudoMultiplier;
   }
 
   executeTimes(times: number) {
@@ -49,7 +64,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // TODO: Add way to reset
+  // TODO: Add way to reset?
   // reset() {
   // }
 
