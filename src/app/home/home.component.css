@@ -13,9 +13,15 @@
 }
 
 .green {
-  background-color: green;
+  background-color: #198754;
+  text-align: center;
+  border-color: black;
+  border-style: solid;
 }
 
 .red {
-  background-color: red;
+  background-color: #dc3545;
+  text-align: center;
+  border-color: black;
+  border-style: solid;
 }

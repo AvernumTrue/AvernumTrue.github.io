@@ -6,41 +6,50 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  pseudoMultiplier: number = 1;
+
   randomNumber!: number;
   procMessage!: string;
-  // allProcs: number[] = [];
-  baseProcChance: number = 50;
   procChance!: number;
   allSuccessProcs: number = 0;
-  lastFewSuccessProcs: number = 0;
+  recentSuccessProcs: number = 0;
   averageOfAllProcs!: number;
-  lastFewProcs: string[] = [];
-  averageOfLastFewProcs!: number;
+  recentProcs: string[] = [];
+  averageOfRecentProcs!: number;
   totalNumbersGenerated: number = 0;
+  procChanceGoal: number = 20;
+  procChanceVarianceMultiplier: number = 3;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.procChance = this.baseProcChance;
+    this.procChance = this.procChanceGoal;
+
   }
 
   execute() {
     this.genNumber();
     this.checkProc();
     this.totalNumbersGenerated++;
-
-    this.averageOfAllProcs = Math.floor(this.allSuccessProcs / this.totalNumbersGenerated * 100);
-    this.averageOfLastFewProcs = Math.floor(this.lastFewSuccessProcs / this.lastFewProcs.length * 100);
-    this.procChance = this.baseProcChance + (this.baseProcChance - this.averageOfLastFewProcs) * this.pseudoMultiplier;
-    // this.procChance = this.baseProcChance * this.pseudoMultiplier;
-
+    this.averageOfAllProcs = this.allSuccessProcs / this.totalNumbersGenerated * 100;
+    this.averageOfRecentProcs = this.recentSuccessProcs / this.recentProcs.length * 100;
     this.checkLastFewNumbers();
   }
 
   checkLastFewNumbers() {
-    if (this.lastFewProcs.length > 10)
-      this.lastFewProcs.shift();
+    if (this.recentProcs.length > 10) {
+      this.recentProcs.shift();
+    }
+
+    // TODO: FIX THIS
+
+    this.recentProcs.forEach(element => {
+      if (element === "Proc!") {
+        this.recentSuccessProcs++;
+      } else {
+        this.recentSuccessProcs--;
+      }
+    }
+    );
   }
 
   genNumber() {
@@ -49,12 +58,12 @@ export class HomeComponent implements OnInit {
 
   checkProc() {
     if (this.randomNumber < this.procChance) {
+      this.procChance -= (100 - this.procChanceGoal) * 0.01 * this.procChanceVarianceMultiplier;
       this.allSuccessProcs++;
-      this.lastFewSuccessProcs++;
-      this.lastFewProcs.push("Proc!");
+      this.recentProcs.push("Proc!");
     } else {
-      this.lastFewSuccessProcs--;
-      this.lastFewProcs.push("No Proc");
+      this.procChance += this.procChanceGoal * 0.01 * this.procChanceVarianceMultiplier;
+      this.recentProcs.push("No Proc");
     }
   }
 
