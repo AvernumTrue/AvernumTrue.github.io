@@ -29,6 +29,12 @@
           class="btn btn-primary">
           x 1000
         </button>
+        <button
+          (click)="reset()"
+          type="button"
+          class="btn btn-primary">
+          reset
+        </button>
         <p class="card-text">Base chance to proc {{procChanceGoal}}%</p>
         <p class="card-text">Current chance to proc {{procChance}}%</p>
         <p class="card-text">Generated number: {{randomNumber}}</p>
@@ -46,14 +52,6 @@
             {{recentProcs[i]}}
           </div>
         </div>
-
-        <!-- TODO: Add way to reset -->
-        <!-- <button
-            (click)="reset()"
-            type="button"
-            class="btn btn-primary">
-            reset
-          </button> -->
       </div>
     </div>
   </div>

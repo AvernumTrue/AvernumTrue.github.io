@@ -74,7 +74,14 @@ export class HomeComponent implements OnInit {
   }
 
   // TODO: Add way to reset?
-  // reset() {
-  // }
+  reset() {
+
+    this.allSuccessProcs = 0;
+    this.recentSuccessProcs= 0;
+    this.recentProcs = [];
+    this.totalNumbersGenerated= 0;
+    this.procChanceGoal = 20;
+    this.procChanceVarianceMultiplier = 3;
+  }
 
 }
