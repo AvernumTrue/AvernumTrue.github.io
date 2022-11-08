@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
     this.checkProc();
     this.totalNumbersGenerated++;
     this.averageOfAllProcs = this.allSuccessProcs / this.totalNumbersGenerated * 100;
-    this.averageOfRecentProcs = this.recentSuccessProcs / this.recentProcs.length * 100;
     this.checkLastFewNumbers();
   }
 
@@ -40,16 +39,14 @@ export class HomeComponent implements OnInit {
       this.recentProcs.shift();
     }
 
-    // TODO: FIX THIS
-
+    this.recentSuccessProcs = 0;
     this.recentProcs.forEach(element => {
       if (element === "Proc!") {
         this.recentSuccessProcs++;
-      } else {
-        this.recentSuccessProcs--;
       }
     }
     );
+    this.averageOfRecentProcs = this.recentSuccessProcs / this.recentProcs.length * 100;
   }
 
   genNumber() {
@@ -73,13 +70,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // TODO: Add way to reset?
   reset() {
-
     this.allSuccessProcs = 0;
-    this.recentSuccessProcs= 0;
+    this.recentSuccessProcs = 0;
     this.recentProcs = [];
-    this.totalNumbersGenerated= 0;
+    this.totalNumbersGenerated = 0;
     this.procChanceGoal = 20;
     this.procChanceVarianceMultiplier = 3;
   }
