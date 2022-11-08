@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  inputForm!: FormGroup;
   randomNumber!: number;
   procMessage!: string;
   procChance!: number;
@@ -16,14 +18,32 @@ export class HomeComponent implements OnInit {
   recentProcs: string[] = [];
   averageOfRecentProcs!: number;
   totalNumbersGenerated: number = 0;
-  procChanceGoal: number = 20;
-  procChanceVarianceMultiplier: number = 3;
+  procChanceGoal: number = 50;
+  procChanceVarianceMultiplier: number = 10;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.procChance = this.procChanceGoal;
+    this.createForm();
+  }
 
+  createForm(): void {
+
+    this.inputForm = this.fb.group({
+      procChanceGoal: [this.procChanceGoal ?? '', [Validators.required, Validators.min(1), Validators.max(99)]],
+      procChanceVarianceMultiplier: [this.procChanceVarianceMultiplier ?? '', [Validators.required, Validators.min(1), Validators.max(99)]],
+    });
+  }
+
+  submit() {
+    if (this.inputForm.status === 'VALID') {
+    }
+    this.procChanceGoal = this.inputForm.get('procChanceGoal')?.value;
+    this.procChanceVarianceMultiplier = this.inputForm.get('procChanceVarianceMultiplier')?.value;
+    this.inputForm.markAllAsTouched();
   }
 
   execute() {
@@ -32,6 +52,7 @@ export class HomeComponent implements OnInit {
     this.totalNumbersGenerated++;
     this.averageOfAllProcs = this.allSuccessProcs / this.totalNumbersGenerated * 100;
     this.checkLastFewNumbers();
+    console.log(this.procChanceVarianceMultiplier)
   }
 
   checkLastFewNumbers() {
@@ -71,12 +92,13 @@ export class HomeComponent implements OnInit {
   }
 
   reset() {
+    this.procChance = this.procChanceGoal;
     this.allSuccessProcs = 0;
     this.recentSuccessProcs = 0;
     this.recentProcs = [];
     this.totalNumbersGenerated = 0;
-    this.procChanceGoal = 20;
-    this.procChanceVarianceMultiplier = 3;
+    this.procChanceGoal = 50;
+    this.procChanceVarianceMultiplier = 10;
   }
 
 }
