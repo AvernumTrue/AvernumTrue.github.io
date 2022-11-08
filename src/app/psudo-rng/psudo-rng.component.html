@@ -1,1 +1,107 @@
-<p>psudo-rng works!</p>
+<div class="container">
+
+  <div class="row justify-content-center">
+
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <h5 class="card-title">Generate a Number</h5>
+        <button
+          (click)="execute()"
+          type="button"
+          class="btn btn-primary">
+          x 1
+        </button>
+        <button
+          (click)="executeTimes(10)"
+          type="button"
+          class="btn btn-primary">
+          x 10
+        </button>
+        <button
+          (click)="executeTimes(100)"
+          type="button"
+          class="btn btn-primary">
+          x 100
+        </button>
+        <button
+          (click)="executeTimes(1000)"
+          type="button"
+          class="btn btn-primary">
+          x 1000
+        </button>
+        <button
+          (click)="reset()"
+          type="button"
+          class="btn btn-primary">
+          Reset
+        </button>
+
+        <div class="container">
+          <form novalidate
+            (ngSubmit)="submit()"
+            [formGroup]="inputForm">
+
+            <label class="text-primary" for="procChanceGoal">Change Proc Chance</label>
+            <input
+              type="number"
+              class="form-control"
+              id="procChanceGoal"
+              placeholder="Enter Proc Target"
+              formControlName="procChanceGoal">
+
+            <label class="text-primary" for="procChanceVarianceMultiplier">Change Variance Multiplier</label>
+            <input
+              type="number"
+              class="form-control"
+              id="procChanceVarianceMultiplier"
+              placeholder="Enter Proc Target"
+              formControlName="procChanceVarianceMultiplier">
+
+            <button
+              (click)="submit()"
+              type="button"
+              class="btn btn-primary">
+              Change Proc Chance Settings
+            </button>
+
+          </form>
+        </div>
+
+        <p class="card-text">Proc chance: {{procChanceGoal}}%</p>
+        <p class="card-text">Current chance to proc: {{procChance}}%</p>
+        <p class="card-text">Generated number: {{randomNumber}}</p>
+        <p class="card-text">Average of all procs percentage: {{averageOfAllProcs}}%</p>
+        <p class="card-text">Total numbers generated: {{totalNumbersGenerated}}</p>
+        <p class="card-text">Last 100 procs percentage: {{averageOfRecentProcs}}%</p>
+
+        <div *ngFor="let currentNumber of recentProcs; index as i">
+          <div *ngIf="recentProcs[i] == 'Proc!'"
+            class="green">
+            {{recentProcs[i]}}
+          </div>
+          <div *ngIf="recentProcs[i] == 'No Proc'"
+            class="red">
+            {{recentProcs[i]}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="list-group" style="width: 40rem;">
+      <a class="list-group-item list-group-item-action text-center"
+        [routerLink]="['/app-edwin-test-page']">
+        Edwin Test-Page
+      </a>
+      <a class="list-group-item list-group-item-action text-center"
+        [routerLink]="['/app-psudo-rng']">
+        Another Link (WIP)
+      </a>
+    </div>
+  </div>
+
+</div>
