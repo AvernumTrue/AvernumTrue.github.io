@@ -76,3 +76,22 @@ footer {
 .contact-us {
   font-size: small;
 }
+
+:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+router-outlet {
+  display: none;
+}
