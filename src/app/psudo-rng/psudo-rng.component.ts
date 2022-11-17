@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-psudo-rng',
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PsudoRNGComponent implements OnInit {
 
-  inputForm!: FormGroup;
+  inputForm!: UntypedFormGroup;
   randomNumber!: number;
   procMessage!: string;
   procChance!: number;
@@ -22,7 +22,7 @@ export class PsudoRNGComponent implements OnInit {
   procChanceVarianceMultiplier: number = 10;
 
   constructor(
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { }
 
   ngOnInit(): void {
