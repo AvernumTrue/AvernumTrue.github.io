@@ -9,6 +9,7 @@ import { EdwinTestPageComponent } from './edwin-test-page/edwin-test-page.compon
 import { PsudoRNGComponent } from './psudo-rng/psudo-rng.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { ChessComponent } from './chess/chess.component';
+import { NgxChessBoardModule } from "ngx-chess-board";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ChessComponent } from './chess/chess.component';
     ChessComponent
   ],
   imports: [
+    NgxChessBoardModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
