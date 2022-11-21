@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PsudoRNGComponent } from './psudo-rng/psudo-rng.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { LinksComponent } from './links/links.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NavComponent } from './shared/nav/nav.component';
     HomeComponent,
     PsudoRNGComponent,
     NavComponent,
+    LinksComponent,
   ],
   imports: [
     FormsModule,
