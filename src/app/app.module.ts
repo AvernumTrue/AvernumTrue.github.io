@@ -5,23 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { EdwinTestPageComponent } from './edwin-test-page/edwin-test-page.component';
 import { PsudoRNGComponent } from './psudo-rng/psudo-rng.component';
 import { NavComponent } from './shared/nav/nav.component';
-import { ChessComponent } from './chess/chess.component';
-import { NgxChessBoardModule } from "ngx-chess-board";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EdwinTestPageComponent,
     PsudoRNGComponent,
     NavComponent,
-    ChessComponent
   ],
   imports: [
-    NgxChessBoardModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
