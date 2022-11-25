@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.key = event.key;
+    this.niceDetector = this.niceDetector.substring(1);
+    this.niceDetector = this.niceDetector.concat(this.key);
+    if (this.niceDetector === "69") {
+      this.nice = true;
+    } else { this.nice = false; }
+  }
 
+  nice = false;
+  niceDetector = "12";
+  key!: string;
   apiLoaded = false;
-
   videoId = 'dQw4w9WgXcQ';
-
 
   constructor() { }
 

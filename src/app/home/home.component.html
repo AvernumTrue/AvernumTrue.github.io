@@ -8,6 +8,12 @@
       [routerLink]="['/app-links']">
       Avernum Links
     </a>
-    <youtube-player [videoId]="videoId"> </youtube-player>
+
+    <div *ngIf="nice">
+      <youtube-player
+        [videoId]="videoId">
+      </youtube-player>
+    </div>
+
   </div>
 </div>

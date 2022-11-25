@@ -3,13 +3,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
 <app-nav></app-nav>
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-md">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+  <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.css']
 })
