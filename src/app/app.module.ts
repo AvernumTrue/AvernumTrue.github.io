@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { PsudoRNGComponent } from './psudo-rng/psudo-rng.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { LinksComponent } from './links/links.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LinksComponent } from './links/links.component';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    YouTubePlayerModule,
   ],
   providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

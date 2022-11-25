@@ -7,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+
+  apiLoaded = false;
+
+  videoId = 'dQw4w9WgXcQ';
+
+
   constructor() { }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    if (!this.apiLoaded) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+      this.apiLoaded = true;
+    }
   }
-
 }
