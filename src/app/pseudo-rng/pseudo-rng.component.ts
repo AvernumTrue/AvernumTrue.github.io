@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-psudo-rng',
-  templateUrl: './psudo-rng.component.html',
-  styleUrls: ['./psudo-rng.component.css']
+  selector: 'app-pseudo-rng',
+  templateUrl: './pseudo-rng.component.html',
+  styleUrls: ['./pseudo-rng.component.css']
 })
-export class PsudoRNGComponent implements OnInit {
+export class PseudoRNGComponent implements OnInit {
 
   inputForm!: UntypedFormGroup;
   randomNumber!: number;

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { PsudoRNGComponent } from './psudo-rng/psudo-rng.component';
+import { PseudoRNGComponent } from './pseudo-rng/pseudo-rng.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { LinksComponent } from './links/links.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
@@ -14,7 +14,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
   declarations: [
     AppComponent,
     HomeComponent,
-    PsudoRNGComponent,
+    PseudoRNGComponent,
     NavComponent,
     LinksComponent,
   ],
